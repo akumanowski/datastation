@@ -1,8 +1,22 @@
-from openpyxl import load_workbook
-from typing import List
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# ----------------------------------------------------------------------------
+# Created By  : akumanowski
+# Created Date: 25/05/2023
+# version ='1.0'
+# ---------------------------------------------------------------------------
+"""
+Модуль консольного приложения DataStation, реализующий чтение данных из xlsx-файлов
+"""
+# ---------------------------------------------------------------------------
 import datetime
+from typing import List
+
+from openpyxl import load_workbook
 
 
+# ---------------------------------------------------------------------------
+# создаем класс для чтения xlsx файлов
 class DataReader:
     def __init__(self, filename: str, date: datetime.date):
         self.workbook = load_workbook(filename=filename)

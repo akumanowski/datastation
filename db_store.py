@@ -1,12 +1,24 @@
-from sqlalchemy import create_engine, func, Engine
-from sqlalchemy import Column, Integer, String, Date
-from sqlalchemy.orm import DeclarativeBase, Session
-import os
-from dotenv import load_dotenv
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# ----------------------------------------------------------------------------
+# Created By  : akumanowski
+# Created Date: 25/05/2023
+# version ='1.0'
+# ---------------------------------------------------------------------------
+"""
+Модуль консольного приложения DataStation, реализующий чтение работу с базой данных
+"""
+# ---------------------------------------------------------------------------
 import datetime
+import os
 from typing import List
 
+from dotenv import load_dotenv
+from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy import create_engine, func, Engine
+from sqlalchemy.orm import DeclarativeBase, Session
 
+# ---------------------------------------------------------------------------
 load_dotenv()
 
 DATABASE_NAME = os.getenv('DATABASE_NAME')
@@ -34,6 +46,7 @@ class DataStream(Base):
     forecast_qoil_2 = Column(Integer, nullable=False, default=0)
 
 
+# создаем класс хранилище данных
 class DataStorage:
     def __init__(self):
         # строка подключения
@@ -60,6 +73,7 @@ class DataStorage:
             db.commit()
 
 
+# создаем класс, выполняющий запрос к бд
 class ReportByDates:
     def __init__(self, engine: Engine):
         self.engine = engine
